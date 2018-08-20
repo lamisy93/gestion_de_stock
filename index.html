@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Gestion de stock</title>
+	<script type="text/javascript" src="app.js"></script>
+
+	<style>
+	  h1{margin-left: 39%;
+	font-weight: normal;
+	margin-bottom: 60px;}
+	  h2{color: dodgerblue;}
+	  hr{margin-top: 80px}
+	#form1{margin-left: 43%;
+	margin-bottom: 50px;
+	width: 280px}
+/*	    #form2{margin-left: 36%;
+	margin-top: 40px}*/
+	  input, button{width: 159px};
+	  caption{};
+	  th{width: 200px}
+      table{
+    border-collapse: collapse;
+    margin-left: 140px;
+    height: auto}
+      td, th{
+    border: 1px solid black;
+    width: 200px;
+    height: 50px}
+      td{padding-left: 100px}
+      select{margin-left: 90px}
+
+	</style>
+
+</head>
+<body>
+
+	<h1>Mon stock de produits</h1>
+
+	<div id="form1">
+
+		<h2 id="titreajout">Ajouter un produit</h2>
+
+		<input id="nom" type="text" name="" placeholder="nom">
+		<input id="prix" type="number" name="" placeholder="prix">
+		<textarea id="descri" name="description" rows="3" maxlength= "150" placeholder="Description de l'article : 150 caractères max"></textarea>
+
+		<button id="ajout">Ajouter</button>
+
+	</div>
+
+
+	<table id="tableau">
+        <thead>
+		<caption>Inventaire</caption>
+		<tr>
+		<th>Nom</th>
+		<th>Reference</th>
+		<th>Prix (€)</th>
+		<th>Description</th>
+		<th>Supprimer</th>
+		</tr>
+		</thead>
+		<tbody id="tbody">
+		<tr>
+
+		</tr>
+		</tbody>
+
+	</table>
+
+
+
+	<hr>
+
+
+  
+<!--     <form id="form2">
+
+		<h2>Supprimer un produit</h2>
+
+		<select id="select">
+			
+		</select>
+
+	<button id="suppr">Supprimer le produit</button>
+
+	</form> -->
+
+
+
+</body>
+</html>

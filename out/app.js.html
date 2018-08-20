@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function () {
+	"use strict";
+
+/** Stock
+ * La var inventaire est un tableau qui stock des produits. 
+ * Inventaire variable is an array which stock products.
+ */
+
+  	var inventaire = [];
+
+/** @function Produit
+ * @constructor 
+ * @property
+ * @param
+ * Produit est un constructeur qui définit les propriétés de chaque produit qui seront ajoutés au stock. 
+ * "Produit" function is a constructor which defined propreties of each stock products. 
+ */ 	
+
+    function Produit(nom, reference, prix, description) {
+		this.nom = nom;
+		this.reference = reference;
+		this.prix = prix;
+		this.description = description;
+	};
+  	
+
+/** @function ajouterProduit
+ * @property
+ * ajouterProduit est une fonction qui permet d'ajouter des produits dans notre stock. 
+ * ajouterProduit add products in the stock.
+ * Ces produits possèdent comme propriétés un nom, un prix, une description ainsi qu'une référence.
+ * These products have a name, a price, a description and a reference.
+ * La référence d'un produit est générée aléatoirement. 
+ * Product reference is generated randomly.
+ * Si le formulaire est correctement rempli les éléments sont ajoutés dans le tableau d'inventaire comprenant des cellules dans des colonnes et des lignes.
+ * If the form is correctly completed the informations will be add in the inventory array which have a cell in column and row.
+ */
+
+    var ajouterProduit = function() {
+    	var ajouter = document.getElementById("ajout");
+        ajouter.addEventListener("click", function(){
+    	var nom = document.getElementById("nom").value;
+	    var prix = document.getElementById("prix").value;
+	    var description = document.getElementById("descri").value;
+	    var reference = (0|Math.random()*9e6).toString(36);
+		if ((!nom || !prix || !description) || isNaN(prix)) {
+			alert("Formulaire mal rempli :(");
+		}
+		else{
+		inventaire.push(new Produit(nom, description, prix, reference));
+		var tbody = document.getElementById("tbody");
+		var ligne = tbody.insertRow();
+		var colonne1 = ligne.insertCell(0);
+		colonne1.innerHTML = nom;
+		var colonne2 = ligne.insertCell(1);
+		colonne2.innerHTML = reference;
+		var colonne3 = ligne.insertCell(2);
+		colonne3.innerHTML = prix;
+		var colonne4 = ligne.insertCell(3);
+		colonne4.innerHTML = description;
+		var colonne5 = ligne.insertCell(4);
+		colonne5.innerHTML = "❌";
+
+		console.log(inventaire);
+		listenSuppr();
+		return inventaire;
+
+	};
+
+	});
+
+  };
+
+/** @function supprimerProd
+ * nous permet de supprimer un produit. 
+ * supprimerProd remove product.
+*/     
+
+    function supprimerProd() {
+	    this.parentNode.remove();
+	};
+
+/** @function listenSuppr
+ * est une fonction qui active la fonction supprimerProd au click et cela en boucle pour chaque dernières cellules. 
+ * listenSuppr active supprimerProd onclik in a loop for each last cell.
+ */
+
+	function listenSuppr() {
+	    lastTd = document.querySelectorAll('#tbody td:last-child');
+	    lastTd.forEach(function (td) {
+	        td.addEventListener("click", supprimerProd)
+	    });
+	};
+
+
+
+/** @function start
+ * exécute nos fonctions. 
+ * start function execute the functions.
+ */
+
+    var start = function () {
+
+	    ajouterProduit();
+
+    };
+
+
+/** @event window 
+ * déclanche notre fonction start par le biais d'un évènement au chargement de notre page. 
+ * window active start function by an event when the document is loaded.
+ */
+	window.addEventListener("DOMContentLoaded", start);
+
+
+}());</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Produit.html">Produit</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:windowd%25C3%25A9clanchenotrefonctionstartparlebiaisd'un%25C3%25A9v%25C3%25A8nementauchargementdenotrepage.windowactivestartfunctionbyaneventwhenthedocumentisloaded.">window déclanche notre fonction start par le biais d'un évènement au chargement de notre page. window active start function by an event when the document is loaded.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ajouterProduit">ajouterProduit</a></li><li><a href="global.html#listenSupprestunefonctionquiactivelafonctionsupprimerProdauclicketcelaenbouclepourchaquederni%25C3%25A8rescellules.listenSuppractivesupprimerProdonclikinaloopforeachlastcell.">listenSupprest une fonction qui active la fonction supprimerProd au click et cela en boucle pour chaque dernières cellules. listenSuppr active supprimerProd onclik in a loop for each last cell.</a></li><li><a href="global.html#startex%25C3%25A9cutenosfonctions.startfunctionexecutethefunctions.">startexécute nos fonctions. start function execute the functions.</a></li><li><a href="global.html#supprimerProdnouspermetdesupprimerunproduit.supprimerProdremoveproduct.">supprimerProdnous permet de supprimer un produit. supprimerProd remove product.</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Aug 20 2018 16:09:03 GMT+0200 (Paris, Madrid (heure d’été))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
